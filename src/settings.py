@@ -1,4 +1,4 @@
-TITLE = "Cards"
+TITLE = "CODENAME: Cards"
 
 WIDTH = 640
 HEIGHT = 360

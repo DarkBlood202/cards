@@ -30,6 +30,10 @@ At the end of each set, cards on the field "fight" each other. Greater value car
     + A colored Joker randomizes every card on the field and hand of both the enemy and you.
     + A B/W Joker reveals all cards of both enemy and you that round.
 ---
+## Version 0.02
++ Added UI Classes: Button.
++ Added UI Functions to draw text (left-aligned and centered).
+
 ## Version 0.01
 + Added Card, SpecialCard, Deck and Board classes.
 + Can draw a card from deck, take it from hand to slots or special slot.

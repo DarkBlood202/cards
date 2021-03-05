@@ -30,3 +30,9 @@ class Palette(Enum):
     SLATE_GRAY = '#6f7d8c'
     GHOST_WHITE = '#fbfbff'
     RICH_BLACK = '#040f16'
+
+    IVORY = '#f6f7eb'
+    CINNABAR = '#e94f37'
+    ONYX = '#393e41'
+    G_B_CRAYOLA = '#3f88c5'
+    KEPPEL = '#44bba4'

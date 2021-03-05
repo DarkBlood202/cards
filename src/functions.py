@@ -1,3 +1,7 @@
+import pygame as pg
+import sys
+from pygame.locals import *
+
 def get_adjacent_cards(slots, card):
     card_index = slots.index(card)
     adj_list = []
@@ -9,4 +13,8 @@ def get_adjacent_cards(slots, card):
         else:
             adj_list.append((slots[index - 1], slots[index + 1]))
     return adj_list[card_index]
+
+def EXIT_GAME():
+    pg.quit()
+    sys.exit()
 
