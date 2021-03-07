@@ -5,6 +5,7 @@ from pygame.locals import *
 
 from settings import *
 from classes import *
+from sprites import *
 from functions import EXIT_GAME
 from ui_classes import *
 from ui_functions import *
@@ -73,18 +74,36 @@ def main_menu():
 
 def game():
     running = True
+    click = False
+
+    myCards = pg.sprite.Group()
+
     while running:
+        mx, my = pg.mouse.get_pos()
+
         screen.fill((0,0,0))
+        draw_text("Game", font, (255, 255, 255), screen, 16, 16)
 
-        draw_text("Game", font, (255, 255, 255), screen, 16, 16)        
+        if click:
+            CardSprite(mx, my).add(myCards)
 
+        # drawing
+        myCards.draw(screen)
+
+        click = False
+        
         for event in pg.event.get():
             if event.type == QUIT:
                 EXIT_GAME()
 
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
+                    myCards.empty()
                     running = False
+
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
 
         pg.display.update()
         clock.tick(FPS)

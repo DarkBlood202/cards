@@ -25,5 +25,3 @@ class Button():
         pg.draw.rect(surface, self.color, self.rect, border_radius=self.border_radius)
         draw_text_centered(self.text, font, color, surface, self.rect.centerx, self.rect.centery)
 
-class MenuButton():
-    pass
