@@ -75,8 +75,12 @@ def main_menu():
 def game():
     running = True
     click = False
+    dragging = False
 
     myCards = pg.sprite.Group()
+    
+    card = CardSprite(WIDTH//2, HEIGHT//2)
+    card.add(myCards)
 
     while running:
         mx, my = pg.mouse.get_pos()
@@ -84,13 +88,15 @@ def game():
         screen.fill((0,0,0))
         draw_text("Game", font, (255, 255, 255), screen, 16, 16)
 
+        card.on_active(mx, my)
+
         if click:
-            CardSprite(mx, my).add(myCards)
+            if card.is_active and not dragging:
+                dragging = True
+                card.offset[0] = card.rect.x - mx
+                card.offset[1] = card.rect.y- my
 
-        # drawing
         myCards.draw(screen)
-
-        click = False
         
         for event in pg.event.get():
             if event.type == QUIT:
@@ -104,6 +110,16 @@ def game():
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
+
+            if event.type == MOUSEBUTTONUP:
+                if event.button == 1:
+                    click = False
+                    dragging = False
+
+            if event.type == MOUSEMOTION:
+                if dragging:
+                    card.rect.x = mx + card.offset[0]
+                    card.rect.y = my + card.offset[1]    
 
         pg.display.update()
         clock.tick(FPS)
